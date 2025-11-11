@@ -1,20 +1,65 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client";
 
-export default function Home() {
+import Header from "./Header";
+import Card from "./Cards";
+import FillerPills from "./FillerPills";
+import ButtomNav from "./ButtomNav";
+
+const pets = [
+  {
+    name: "Harry",
+    breed: "Yorkshire Terrier",
+    age: "Young",
+    image: "/dummypiccat.jpeg",
+  },
+  {
+    name: "Pjercik",
+    breed: "Blandingsrace",
+    age: "2,5 år",
+    image: "/dummypiccat.jpeg",
+  },
+  {
+    name: "xxxxx",
+    breed: "Cat",
+    age: "21 år",
+    image: "/dummypiccat.jpeg",
+  },
+  {
+    name: "Solo",
+    breed: "Cat",
+    age: "22 år",
+    image: "/dummypiccat.jpeg",
+  },
+  {
+    name: "Money",
+    breed: "Cat",
+    age: "21 år",
+    image: "/dummypiccat.jpeg",
+  },
+  {
+    name: "Lindan",
+    breed: "Cat",
+    age: "21 år",
+    image: "/dummypiccat.jpeg",
+  },
+];
+
+export default function Page() {
   return (
-    <Link href="/detalje">
-      <div className="w-fit rounded-2xl p-2 shadow-md">
-        <Image
-          loading="eager"
-          alt="cat"
-          src="https://placecats.com/neo/300/200"
-          width={50}
-          height={50}
-          className="h-full w-full object-cover"
-        />
-        <h2> Hej </h2>
-      </div>
-    </Link>
+    <div className="min-h-dvh bg-white">
+      <Header />
+
+      <main className="mx-auto max-w-screen-sm px-4 pt-4 pb-6 pb-[calc(64px+env(safe-area-inset-bottom))]">
+        <FillerPills />
+
+        {/* 2 kolonner på mobil */}
+        <div className="grid grid-cols-2 gap-4">
+          {pets.map((p, i) => (
+            <Card key={i} pet={p} />
+          ))}
+          <ButtomNav />
+        </div>
+      </main>
+    </div>
   );
 }
